@@ -17,6 +17,7 @@ import { useState } from "react";
 const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
     const [name, setName] = useState(dataEdit.name || "");
     const [description, setDescription] = useState(dataEdit.email || "");
+    const [price, setPrice] = useState(dataEdit.price || "");
 
 
     const handleSave = () => {
@@ -27,11 +28,11 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
         }
 
         if(Object.keys(dataEdit).length) {
-            data[dataEdit.index] = { name, description };
+            data[dataEdit.index] = { name, description, price };
         }
 
         const newDataArray = !Object.keys(dataEdit).length
-        ? [...(data ? data : []), { name, description }]
+        ? [...(data ? data : []), { name, description, price}]
         : [...(data ? data : [])];
 
         localStorage.setItem("cadProduct", JSON.stringify(newDataArray));
@@ -70,6 +71,14 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
                                 type="text"	
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
+                                />
+                            </Box>
+                            <Box>
+                                <FormLabel>Preço</FormLabel>
+                                <Input
+                                type="Number"	
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
                                 />
                             </Box>
                         </FormControl>

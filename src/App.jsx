@@ -66,20 +66,24 @@ const App = () => {
                 <Th maxW={isMobile ? 5 : 100} fontSize="20px">
                   Descrição
                 </Th>
+                <Th maxW={isMobile ? 5 : 100} fontSize="20px">
+                  Preço
+                </Th>
                 <Th p={0}></Th>
                 <Th p={0}></Th>
               </Tr>
             </Thead>
             <Tbody> 
-              {data.map(({ name, description}, index) => (
+              {data.map(({ name, description, price}, index) => (
                 <Tr key={index} cursor="pointer" _hover={{ bg: "gray.100"}}>
                   <Td maxW={isMobile ? 5 : 100}>{name}</Td> 
                   <Td maxW={isMobile ? 5 : 100}>{description}</Td> 
+                  <Td maxW={isMobile ? 5 : 100}>{price}</Td>
                   <Td p={0}> 
                     <EditIcon
                     fontSize={20}
                     onClick={() => [
-                      setDataEdit({ name, description, index }),
+                      setDataEdit({ name, description, price, index }),
                       onOpen(),
                     ]}
                     />
